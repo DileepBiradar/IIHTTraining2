@@ -1,0 +1,65 @@
+Consider the below two tables for reference while trying to solve the SQL queries for practice.
+
+Table – EmployeeDetails
+
+EmpId 	FullName	ManagerId	DateOfJoining	City
+121	    John Snow	321	       01/31/2019	     Toronto
+321	    Walter White	986	       01/30/2020	      California
+421	   Kuldeep Rana	876	       27/11/2021	      New Delhi
+
+Table – EmployeeSalary
+
+EmpId	Project	Salary	    Variable
+121	P1	      8000	             500
+321	P2	      10000	             1000
+421	P1	     12000	              0
+
+
+Ques.1. Write an SQL query to fetch the EmpId and FullName of all the employees working under the Manager with id – ‘986’.
+
+ANS :--select empid, fullname from employeedetails where managerid=986;
+
+Ques.2. Write an SQL query to fetch the different projects available from the EmployeeSalary table.
+
+ANS:--select distinct(project) from employeesalary;
+
+Ques.3. Write an SQL query to fetch the count of employees working in project ‘P1’.
+
+ANS:--select count(*) from employeesalary where project='p1';
+
+Ques.4. Write an SQL query to find the maximum, minimum, and average salary of the employees.
+
+ANS:--select max(salary), min(salary), avg(salary) from employeesalary;
+
+Ques.5. Write an SQL query to find the employee id whose salary lies in the range of 9000 and 15000.
+
+ANS:--select empid, salary from employeesalary where salary between 9000 and 15000;
+
+Ques.6. Write an SQL query to fetch those employees who live in Toronto and work under the manager with ManagerId – 321.
+
+ANS:--select empid, city ,managerid, from employeedetails where city='toronto' and managerid=321;
+
+Ques.7. Write an SQL query to fetch all the employees who either live in California or work under a manager with ManagerId – 321.
+
+ANS:--select empid, city, managerid from employeedetails where city='california' or managerid=321;
+
+Ques.8. Write an SQL query to fetch all those employees who work on Projects other than P1.
+
+ANS:--select empid from employeesalary where project != 'p1';
+
+Ques.9. Write an SQL query to display the total salary of each employee adding the Salary with Variable value.
+
+ANS:--select empid, salary+variable as totalsalary from employeesalary;
+
+Ques.10. Write an SQL query to fetch the employees whose name begins with any two characters, followed by a text “hn” and ends with any sequence of characters.
+
+ANS:--select fullname from employeedetails where fullname like '__hn%';
+
+Ques.11. Write an SQL query to fetch all the EmpIds which are present in either of the tables – ‘EmployeeDetails’ and ‘EmployeeSalary’.
+
+ANS:--select empid from employeedetails union select empid from employeesalary;
+
+Ques.12. Write an SQL query to fetch common records between two tables.
+
+ANS:--select * from employeedetails where empid in (select empid from employeesalary) ;
+
